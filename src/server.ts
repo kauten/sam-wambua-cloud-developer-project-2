@@ -37,18 +37,20 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     res.send("try GET /filteredimage?image_url={{}}")
   } );
 
+
   /**
+   * 
    * Sam Wambua's Implementation of the @TODO1 above
    * 
-   */
-
+   * 
+  */
   app.get( "/filteredimage", async ( req, res ) => {
 
         const { image_url } = req.query;
         //get the image url from the query params
         //const image_url = req.query.image_url;
         if (!image_url) {
-          return res.status(400).send('Please include the image url as a query parameter in your request.');
+          return res.status(400).send('Bad Request. Please include the image url as a query parameter in your request.');
         }
         
         //call filterImageFromURL(image_url) to filter the image
