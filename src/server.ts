@@ -50,7 +50,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         //get the image url from the query params
         //const image_url = req.query.image_url;
         if (!image_url) {
-          return res.status(400).send('Bad Request. Please include the image url as a query parameter in your request.');
+          return res.status(400).send('Bad Request. Please include the image url as a query parameter in your request (e.g. /filteredimage?image_url={{}})');
         }
         
         //call filterImageFromURL(image_url) to filter the image
