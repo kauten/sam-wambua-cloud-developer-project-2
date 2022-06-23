@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import {filterImageFromURL, filterImageFromURL2, deleteLocalFiles} from './util/util';
 
 (async () => {
 
@@ -56,7 +56,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         //call filterImageFromURL(image_url) to filter the image
         try{
 
-            const filteredpath = await filterImageFromURL(image_url);
+            const filteredpath = await filterImageFromURL2(image_url);
             //send the resulting file in the response
             res.sendFile(filteredpath);
             //deletes any files on the server on finish of the response
