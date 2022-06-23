@@ -33,9 +33,11 @@ import {filterImageFromURL, filterImageFromURL2, deleteLocalFiles} from './util/
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
-    res.send("try GET /filteredimage?image_url={{}}")
-  } );
+  app.get( "/", async ( req: express.Request, res: express.Response ) => {
+
+    res.status(200).send("try GET /filteredimage?image_url={{}}")
+
+  });
 
 
   /**
@@ -44,9 +46,9 @@ import {filterImageFromURL, filterImageFromURL2, deleteLocalFiles} from './util/
    * 
    * 
   */
-  app.get( "/filteredimage", async ( req, res ) => {
+  app.get( "/filteredimage", async ( req: express.Request, res: express.Response ) => {
 
-        const { image_url } = req.query;
+        const { image_url } : { image_url: string } = req.query;
         //get the image url from the query params
         //const image_url = req.query.image_url;
         if (!image_url) {
@@ -56,9 +58,9 @@ import {filterImageFromURL, filterImageFromURL2, deleteLocalFiles} from './util/
         //call filterImageFromURL(image_url) to filter the image
         try{
 
-            const filteredpath = await filterImageFromURL2(image_url);
+            const filteredpath : string = await filterImageFromURL2(image_url);
             //send the resulting file in the response
-            res.sendFile(filteredpath);
+            res.status(200).sendFile(filteredpath);
             //deletes any files on the server on finish of the response
             res.on('finish', () => {
               deleteLocalFiles([filteredpath]);
@@ -66,7 +68,7 @@ import {filterImageFromURL, filterImageFromURL2, deleteLocalFiles} from './util/
 
         } catch(error){
 
-            res.status(422).send("Error fetching image from: "+ image_url +". With error: "+ error);
+            res.status(500).send("Error fetching image from: "+ image_url +". With error: "+ error);
 
         }
 
