@@ -1,3 +1,18 @@
+#Project Submission Notes
+This is Sam Wambua's (onwardfave@gmail.com) submission of project 2
+
+1. I did a bit of code improvements to use axios to fetch the image since jimp
+would throw an error for some images. This behaviour is described here:
+https://stackoverflow.com/questions/66611327/error-could-not-find-mime-for-buffer-null-while-using-jimp-to-save-the-buffer 
+
+2. The code resides in the git repository 
+	https://github.com/kauten/sam-wambua-cloud-developer-project-2.git
+3. The public endpoint to interact with the service is:
+	http://sam-wambua-project-2-dev.us-east-1.elasticbeanstalk.com/
+
+
+
+
 # Udagram Image Filtering Microservice
 
 Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
