@@ -39,14 +39,14 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
  export async function filterImageFromURL2(inputURL: string): Promise<string> {
   return new Promise(async (resolve, reject) => {
     try {
-      const photo = await filterImageFromURL3(inputURL);
+      const photo = await fetchImageBuffer(inputURL);
       const outpath =
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
       await photo
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
         .greyscale() // set greyscale
-        .write(__dirname + outpath, (img) => {
+        .write(__dirname + outpath, (img: any) => {
           resolve(__dirname + outpath);
         });
     } catch (error) {
@@ -55,7 +55,7 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
   });
 }
 
-async function filterImageFromURL3(inputURL: string): Promise<any> {
+async function fetchImageBuffer(inputURL: string): Promise<any> {
   return new Promise(async (resolve, reject) => {
     try {
       axios({
